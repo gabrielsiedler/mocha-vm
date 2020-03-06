@@ -1,11 +1,10 @@
 /** This file runs the Mocha runner in a sandboxed environment  */
 const { NodeVM } = require('vm2');
-const harakiri = require('harakiri');
 
 global.expect = require('chai').expect;
 
 function vm(options) {
-  const external = ['mocha', 'harakiri'];
+  const external = ['mocha'];
   const builtin = ['path', 'util', 'fs'];
 
   if (options) {
@@ -24,7 +23,7 @@ function vm(options) {
 
   const nodevm = new NodeVM({
     console: 'inherit',
-    sandbox: { harakiri },
+    sandbox: {},
     require: {
       external,
       builtin,

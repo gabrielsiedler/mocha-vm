@@ -31,7 +31,6 @@
   "license": "MIT",
   "dependencies": {
     "chai": "^4.2.0",
-    "harakiri": "^1.0.1",
     "mocha": "^6.2.0",
     "vm2": "^3.8.3"
   },
