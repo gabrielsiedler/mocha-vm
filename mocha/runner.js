@@ -61,9 +61,7 @@ async function runTests(string, options) {
   try {
     runner = test.run();
   } catch (error) {
-    resolve({ error });
-
-    return;
+    return { error };
   }
 
   let suiteStart, suiteEnd, runnerStart, runnerEnd;
