@@ -1,18 +1,18 @@
 /** This file runs the Mocha runner in a sandboxed environment  */
-const { NodeVM } = require("vm2");
-global.expect = require("chai").expect;
+const { NodeVM } = require('vm2');
+global.expect = require('chai').expect;
 
 function vm(options) {
-  const external = ["mocha"];
-  const builtin = ["path", "util", "fs"];
+  const external = ['mocha', 'harakiri'];
+  const builtin = ['path', 'util', 'fs'];
 
   if (options) {
     const library = options.library ? options.library : options;
     switch (library) {
-      case "chai":
+      case 'chai':
         external.push(library);
         break;
-      case "assert":
+      case 'assert':
         builtin.push(library);
         break;
       default:
@@ -21,13 +21,13 @@ function vm(options) {
   }
 
   const nodevm = new NodeVM({
-    console: "inherit",
+    console: 'inherit',
     sandbox: {},
     require: {
       external,
-      builtin
+      builtin,
     },
-    root: __dirname
+    root: __dirname,
   });
   return nodevm;
 }
