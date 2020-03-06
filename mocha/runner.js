@@ -56,7 +56,15 @@ async function runTests(string, options) {
 
   test.addFile(path.join(__dirname, 'temp', fileName));
 
-  const runner = test.run();
+  let runner;
+
+  try {
+    runner = test.run();
+  } catch (error) {
+    resolve({ error });
+
+    return;
+  }
 
   let suiteStart, suiteEnd, runnerStart, runnerEnd;
   let data = [],
