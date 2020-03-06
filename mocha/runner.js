@@ -61,6 +61,10 @@ async function runTests(string, options) {
   try {
     runner = test.run();
   } catch (error) {
+    if (/Unable to compile TypeScript/.test(error)) {
+      error = 'Unable to compile code.';
+    }
+
     return { error };
   }
 
