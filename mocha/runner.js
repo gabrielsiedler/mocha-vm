@@ -71,6 +71,8 @@ async function runTests(string, options) {
     testCount = 0;
 
   return new Promise((resolve, reject) => {
+    if (!runnerStart) runnerStart = Date.now();
+
     runner.on('suite', (e) => {
       if (!runnerStart) runnerStart = Date.now();
       suiteCount += 1;
