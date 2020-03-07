@@ -65,7 +65,7 @@ async function runTests(string, options) {
       error = 'Unable to compile code.';
     }
 
-    return { error };
+    return { error: error.stack };
   }
 
   let suiteStart, suiteEnd, runnerStart, runnerEnd;
