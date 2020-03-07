@@ -1,6 +1,6 @@
 /** This file runs the Mocha runner in a sandboxed environment  */
 const { NodeVM } = require('vm2');
-
+const mocha = require('mocha');
 global.expect = require('chai').expect;
 
 function vm(options) {
@@ -23,7 +23,7 @@ function vm(options) {
 
   const nodevm = new NodeVM({
     console: 'inherit',
-    sandbox: {},
+    sandbox: { mocha },
     require: {
       external,
       builtin,
